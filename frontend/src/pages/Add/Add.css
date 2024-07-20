@@ -1,0 +1,42 @@
+
+.add{
+    width: 80vw;
+    margin-left: max(5vw, 25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+
+.add form{
+    gap: 20px;
+    border: 2px solid gray;
+    padding: 30px;
+    margin: 30px;
+
+}
+
+.add-product-name, .add-product-expiry-date, .add-product-card-name{
+    width: max(20%, 180px);
+   
+}
+
+.add-product-name input, .add-product-expiry-date input, .add-product-card-name input{
+    padding: 10px;
+}
+
+.add-btn{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.add-container{
+    display: flex;
+}

@@ -1,0 +1,22 @@
+
+.card-display{
+    margin-top: 30px;
+    width: 80vw;
+    
+}
+
+.card-display h2{
+    font-size: max(2vw, 24px);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-display-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+    margin: 30px;
+    gap: 30px;
+    row-gap: 20px;
+}

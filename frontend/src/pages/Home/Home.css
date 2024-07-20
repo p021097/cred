@@ -1,0 +1,10 @@
+
+.home{
+    display: flex;
+}
+
+.home-container{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
