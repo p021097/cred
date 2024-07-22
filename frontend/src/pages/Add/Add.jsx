@@ -1,7 +1,6 @@
-import React, {  useContext, useState } from 'react'
+import {  useContext, useState } from 'react'
 import './Add.css'
 import axios from 'axios'
-import Sidebar from '../../components/Sidebar/Sidebar'
 import { StoreContext } from '../../context/StoreContex'
 
 const Add = () => {
@@ -31,26 +30,25 @@ const Add = () => {
             nameOnTheCard : data.nameOnTheCard
         }
         
-        const token = localStorage.getItem('Authorization')
-        console.log(localStorage.getItem('Authorization'));
+        const token = localStorage.getItem('token')
+        console.log(localStorage.getItem('token'));
 
         try {
             const res = await axios.post(`${url}/api/card/add`, formData, {
                 headers: {
-                    'Authorization': `${token}`,
+                    'token': `${token}`,
                     'Content-Type': 'application/json'
                 }
+            
             })
 
             if(res.data.success){
+                
                 setData({
                     cardNumber : "",
                     expiryDate : "",
                     nameOnTheCard: ""
                 })
-            }else {
-                // Handle failure response
-                console.error('Error adding card:', res.data.message);
             }
 
         } catch (error) {

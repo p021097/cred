@@ -27,7 +27,7 @@ connectDB();
 
 app.use('/api/card', cardRouter)
 app.use('/api/user', userRouter)
-app.use('/api/cards', cardsRouter)
+// app.use('/api/cards', cardsRouter)
 
 
 

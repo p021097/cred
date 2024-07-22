@@ -13,11 +13,15 @@ const Sidebar = () => {
                 <img src={assets.add_icon} alt="" />
                 <p>Add Card</p>
             </NavLink>
-            {card_list.length < 1 ? <></> : <NavLink to='/list' className="sidebar-option">
+            {/* {card_list.length < 1 ? <></> : <NavLink to='/list' className="sidebar-option">
                 <img src={assets.order_icon} alt="" />
                 <p>View Cards</p>
-            </NavLink>}
+            </NavLink>} */}
             
+           <NavLink to='/list' className="sidebar-option">
+                <img src={assets.order_icon} alt="" />
+                <p>View Cards</p>
+            </NavLink>
             {/* <NavLink to='/orders' className="sidebar-option">
                 <img src={assets.order_icon} alt="" />
                 <p>Orders</p>
