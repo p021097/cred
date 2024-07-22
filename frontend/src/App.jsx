@@ -15,6 +15,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const { token } = useContext(StoreContext);
+  console.log(token);
   return (
     <>
       {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}

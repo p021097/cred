@@ -25,7 +25,12 @@ const cardSchema = new mongoose.Schema({
     nameOnTheCard : {
         type : String,
         required : true
-    }
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
+  },
 })
 
 const cardModel = mongoose.models.card || mongoose.model("card", cardSchema)

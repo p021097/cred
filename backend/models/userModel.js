@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import cardModel from './cardModel.js'
 
 
 const userSchema = new mongoose.Schema({
@@ -15,10 +16,7 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    cardData : {
-        type : Object,
-        default : {}
-    }
+    cardData : [{ type: mongoose.Schema.Types.ObjectId, ref: 'card' }]
 },{minimize:false})
 
 

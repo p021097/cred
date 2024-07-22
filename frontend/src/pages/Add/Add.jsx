@@ -13,7 +13,7 @@ const Add = () => {
     const [data, setData] = useState({
         cardNumber : "",
         expiryDate : "",
-        nameOnCard: ""
+        nameOnTheCard: ""
     })
 
     const onChangeHandler = (event) => {
@@ -25,20 +25,39 @@ const Add = () => {
 
     const onSubmitHandler = async(event)=>{
         event.preventDefault()
-        const formData = new FormData()
-        formData.append("cardNumber", Number(data.cardNumber))
-        formData.append("expiryDate", Date(data.expiryDate))
-        formData.append("nameOnCard", data.nameOnCard)
-        const response = await axios.post(`${url}/api/card/add`, formData)
-        if(response.data.success){
-            setData({
-                cardNumber : "",
-                expiryDate : "",
-                nameOnCard: ""
-            })
-        }else{
-            
+        const formData = {
+            cardNumber: data.cardNumber,
+            expiryDate : data.expiryDate,
+            nameOnTheCard : data.nameOnTheCard
         }
+        
+        const token = localStorage.getItem('Authorization')
+        console.log(localStorage.getItem('Authorization'));
+
+        try {
+            const res = await axios.post(`${url}/api/card/add`, formData, {
+                headers: {
+                    'Authorization': `${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            if(res.data.success){
+                setData({
+                    cardNumber : "",
+                    expiryDate : "",
+                    nameOnTheCard: ""
+                })
+            }else {
+                // Handle failure response
+                console.error('Error adding card:', res.data.message);
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+     
+
     }
 
  
@@ -55,11 +74,11 @@ const Add = () => {
             </div>
             <div className="add-product-expiry-date flex-col">
                 <p>Expiry Date</p>
-                <input onChange={onChangeHandler}  value={data.expiryDate} type="month" name='expiryDate' placeholder='Expiry date' required/>
+                <input onChange={onChangeHandler}  value={data.expiryDate} type="text" name='expiryDate' placeholder='Expiry date' required/>
             </div>
             <div className="add-product-card-name flex-col">
                 <p>Name on the Card</p>
-                <input  onChange={onChangeHandler} value={data.nameOnCard} type="text" name='nameOnCard' placeholder='Enter name on the card'required/>
+                <input  onChange={onChangeHandler} value={data.nameOnCard} type="text" name='nameOnTheCard' placeholder='Enter name on the card'required/>
             </div>
             <button type='submit' className='add-btn'> Add Card</button>
         </form>
