@@ -35,18 +35,18 @@ const StoreContextProvider = (props) => {
     // }
     // fetchCardList()
     
-    // useEffect(()=>{
-    //     getStatementTotal()
+    useEffect(()=>{
+        getStatementTotal()
 
         
-    //     async function loadData(){
-    //     await fetchCardList()
-    //     if(localStorage.getItem("token")){
-    //         setToken(localStorage.getItem('token'))
-    //     }
-    //     }
-    //     loadData()
-    // },[])
+        // async function loadData(){
+        // await fetchCardList()
+        // if(localStorage.getItem("token")){
+        //     setToken(localStorage.getItem('token'))
+        // }
+        // }
+        // loadData()
+    },[])
 
     useEffect(()=>{
         console.log(amountToPay.amount);

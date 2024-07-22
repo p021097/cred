@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext} from 'react'
 import './Statement.css'
 import { StoreContext } from '../../context/StoreContex'
 import { useNavigate } from 'react-router-dom'
@@ -41,8 +41,8 @@ const onChangeHandler = (event) => {
         <hr />
         {card_transactions.map((trn, idx) => {
           return (
-            <div>
-              <div key={idx} className="cart-items-title cart-items-item">
+            <div key={idx} >
+              <div className="cart-items-title cart-items-item">
                 <p>{trn.date}</p>
                 <p>{trn.vendor}</p>
                 <p>{trn.type}</p>

@@ -31,7 +31,8 @@ const cardSchema = new mongoose.Schema({
       ref: 'user',
       required: true,
   },
-})
+  statementData : [{ type: mongoose.Schema.Types.ObjectId, ref: 'statement' }]
+},{minimize:false})
 
 const cardModel = mongoose.models.card || mongoose.model("card", cardSchema)
 
