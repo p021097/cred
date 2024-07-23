@@ -6,6 +6,7 @@ import userRouter from './routes/userRoute.js'
 import 'dotenv/config'
 import cardsRouter from './routes/cardsRoute.js'
 import statementRouter from './routes/statementRoute.js'
+import paymentRouter from './routes/paymentRoute.js'
 
 
 // app config
@@ -29,6 +30,7 @@ connectDB();
 app.use('/api/card', cardRouter)
 app.use('/api/user', userRouter)
 app.use('/api/statement', statementRouter)
+app.use('/api/payment' , paymentRouter)
 
 // app.use('/api/cards', cardsRouter)
 

@@ -2,19 +2,38 @@ import { useContext} from 'react'
 import './Statement.css'
 import { StoreContext } from '../../context/StoreContex'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Statement = () => {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-const {card_transactions, statementTotal, amountToPay, setAmountToPay} = useContext(StoreContext)
+const {card_transactions, statementTotal, amountToPay, setAmountToPay, token, url, statementCardNumber} = useContext(StoreContext)
 
 if(amountToPay.amount > statementTotal){
   alert("please enter the amount less that statement Total")
   setAmountToPay({
     amount : 0
   })
+}
 
+console.log(statementCardNumber.nameOnTheCard);
+
+
+const makePayment = async (event) => {
+  event.preventDefault()
+  let orderData = {
+    card : statementCardNumber,
+    amount : Number(amountToPay.amount),
+    quantity : 1
+  }
+  let res = await axios.post(url+"/api/payment/payment", orderData,{headers : {token}})
+  if (res.data.success) {
+    const {session_url} = res.data
+    window.location.replace(session_url)
+  }else{
+    alert("Error")
+  }
 }
 
 
@@ -65,15 +84,14 @@ const onChangeHandler = (event) => {
           </div>
           <div className='amount-to-pay'>
             <label > Amount to pay </label>
-            <input onChange={onChangeHandler} placeholder='Enter the Amount to Pay' type="text" name="amount" value={amountToPay.amount} />
+            <input required onChange={onChangeHandler} placeholder='Enter the Amount to Pay' type="text" name="amount" value={amountToPay.amount} />
           </div>
           <div className='cart-total'>
             <p>Remaining Statement Amount ${statementTotal - amountToPay.amount}</p>
           </div>
-          <button onClick={()=>navigate('/payment')}>Proceed to Checkout</button>
+          <button onClick={makePayment} >Proceed to Checkout</button>
         </div>
       </div>
-
     </div>
   )
 }

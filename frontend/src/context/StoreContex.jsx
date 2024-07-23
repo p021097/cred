@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { card_transactions } from "../assets/assets";
-import axios from "axios";
+
 
 export const StoreContext = createContext(null)
 
@@ -12,6 +12,7 @@ const StoreContextProvider = (props) => {
     const [amountToPay, setAmountToPay] = useState({
         amount : statementTotal
     })
+    const [statementCardNumber,setStatementCardNumber] = useState([])
 
 
 
@@ -37,7 +38,7 @@ const StoreContextProvider = (props) => {
     
     useEffect(()=>{
         getStatementTotal()
-
+       
         
         // async function loadData(){
         // await fetchCardList()
@@ -47,6 +48,10 @@ const StoreContextProvider = (props) => {
         // }
         // loadData()
     },[])
+
+    useEffect(()=>{
+        console.log(statementCardNumber);
+    },[statementCardNumber])
 
     useEffect(()=>{
         console.log(amountToPay.amount);
@@ -66,7 +71,9 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        setCardList
+        setCardList,
+        statementCardNumber,
+        setStatementCardNumber
     }
 
     return (

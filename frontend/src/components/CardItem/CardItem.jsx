@@ -1,14 +1,26 @@
-import React from "react";
+// import React from "react";
+import { useContext } from "react";
 import "./CardItem.css";
 import { useNavigate } from "react-router-dom";
+import { StoreContext } from "../../context/StoreContex";
 
 
-const CardItem = ({ id, cardNumber, expiryDate, nameOnTheCard }) => {
+const CardItem = ({ id, cardNumber, expiryDate, nameOnTheCard}) => {
 
+  const {setStatementCardNumber} = useContext(StoreContext)
   cardNumber = cardNumber.toString()
 
   const navigate = useNavigate()
 
+const handle = () => {
+  setStatementCardNumber(
+    {cardNumber : cardNumber,
+      expiryDate :expiryDate,
+      nameOnTheCard:nameOnTheCard}
+  )
+  navigate('/statement')
+
+}
 
 const formatCardNumber = (cardNum) => {
     return cardNum.replace(/(\d{4})(?=\d)/g, '$1-');
@@ -22,7 +34,7 @@ const formatCardNumber = (cardNum) => {
         <div className="name-on-the-card">Name on Card - {nameOnTheCard}</div>
       </div>
       <button>Pay bill</button>
-      <button onClick={() => navigate('/statement')}>View smart statement</button>
+      <button onClick={handle}>View smart statement</button>
     </div>
   );
 };

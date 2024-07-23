@@ -1,12 +1,20 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import './Payment.css'
 import { StoreContext } from '../../context/StoreContex'
 
 const Payment = () => {
-const {amountToPay, statementTotal} = useContext(StoreContext)
+const {amountToPay, statementTotal, token, url,card_transactions} = useContext(StoreContext)
+
+const makePayment = async (event) => {
+  event.preventDefault()
+  let orderData = {
+    amount : amountToPay,
+  }
+  let res = await axios.post(url)
+}
 
   return (
-    <form>
+    <form onSubmit={makePayment}>
          <div className="place-order-right">
           <div className="cart-total">
             <h2>Particulars</h2>
