@@ -1,6 +1,6 @@
 import cardModel from "../models/cardModel.js";
-import fs from "fs";
 import userModel from "../models/userModel.js";
+
 
 // add card
 
@@ -27,20 +27,6 @@ const addCard = async (req, res) => {
   } catch (error) {
     return res.status(404).json({ success: false, message: error });
   }
-  // const card = new userModel({
-  //     cardNumber:req.body.cardNumber,
-  //     expiryDate : req.body.expiryDate,
-  //     nameOnTheCard: req.body.nameOnTheCard
-  // })
-
-  // try {
-  //     await card.save()
-  //     res.json({success:true, message:"Card added successfully"})
-  // } catch (error) {
-  //     console.log(error);
-  //     res.json({success:false, message:"Error"})
-
-  // }
 };
 
 // List cards
@@ -68,4 +54,34 @@ const removeCard = async (req, res) => {
   }
 };
 
-export { addCard, listCard, removeCard };
+
+const updateRemainingAmount = async (req, res) => {
+  const { cardId, remainingAmount } = req.body;
+
+  try {
+    // Update the remaining amount in your database
+    await cardModel.updateOne({ _id: cardId }, { remainingAmount });
+
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+
+const getCardDetails = async (req, res) => {
+  const { cardId } = req.body;
+  try {
+    const card = await cardModel.findById(cardId).select('remainingAmount');
+    if (!card) {
+      return res.status(404).json({ success: false, message: 'Card not found' });
+    }
+    res.json({ success: true, card });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
+
+
+export { addCard, listCard, removeCard, updateRemainingAmount, getCardDetails };

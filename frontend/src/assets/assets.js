@@ -14,7 +14,6 @@ export const assets ={
     profile_image,
     upload_area,
     parcel_icon,
-    profile_image,
     cross_icon,
     cred_logo
 

@@ -1,3 +1,5 @@
 .list{
     display: flex;
+    background-color: rgb(240, 244, 247);
+    background: linear-gradient(-70deg, #202020, #635e5e);
 }

@@ -1,11 +1,15 @@
 .card-item{
     border: 2px solid grey;
-    padding: 5px;
     align-self: center;
     display: flex;
     flex-direction: column;
+    color: white;
+    height: 100%;
 }
 
+.card-item span{
+    color: grey;
+}
 .card-number{
     align-self: center;
     padding: 10px;
@@ -27,8 +31,36 @@
     padding: 5px;
     border: none;
     background-color: antiquewhite;
+    color: black;
     border-radius: 5px;
     margin: 5px;
+    cursor: pointer;
 }
 
 
+@media (max-width:375px){
+    .card-item{
+        margin: 10px;
+        padding: 0px 0px 5px 0px;
+    }
+    .card-number{
+        padding-top: 2px;
+        margin: 0px;
+        border: none;
+    }
+    
+}
+@media (max-width:480px){
+    .card-item{
+        margin: 10px;
+        padding: 0px 0px 5px 0px;
+
+    }
+    .card-number{
+        padding-top: 2px;
+        margin: 0px;
+        border: none;
+
+    }
+    
+}

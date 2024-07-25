@@ -1,0 +1,38 @@
+.payment {
+    width: 80%;
+}
+
+.cart-total{
+    display: flex;
+    align-items: center;
+}
+
+.amount-to-pay{
+    display: flex;
+    color: black;
+    padding: 5px;
+}
+.amount-to-pay input{
+    margin: 10px
+}
+
+.amount-to-pay label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+}
+.cart-total-remaining{
+    display: flex;
+    align-items: center;
+}
+
+.cart-total-remaining input{
+    padding: 10px;
+    border: none;
+    width: 85px;
+}
+
+.cart-total-remaining input::placeholder{
+    color: black;
+}

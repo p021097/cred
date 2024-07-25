@@ -43,11 +43,6 @@
     gap: 20px;
 }
 
-.cart-total-details{
-    display: flex;
-    justify-content: space-between;
-    color: #555
-}
 
 .cart-total hr{
     margin: 10px 0px;
@@ -64,6 +59,9 @@
 }
 
 .cart-total h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-self: center;
 }
 
@@ -74,3 +72,17 @@
     border-radius: 4px;
 }
 
+.cart h2{
+    align-self: center;
+}
+
+.cart-total-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.cart-total-details p{
+    margin:0px 10px 0px 0px
+}

@@ -26,9 +26,8 @@ connectDB();
 
 
 // api endpoint
-
-app.use('/api/card', cardRouter)
 app.use('/api/user', userRouter)
+app.use('/api/card', cardRouter)
 app.use('/api/statement', statementRouter)
 app.use('/api/payment' , paymentRouter)
 

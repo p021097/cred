@@ -1,0 +1,28 @@
+.my-payments{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    color: black;
+    gap: 10px;
+}
+
+.my-payments button{
+    width: 500px;
+    background-color: aliceblue;
+    color: black;
+
+}
+
+.my-payments button button{
+    width: 50%;
+}
+
+.my-payments h2{
+    margin: 15px;
+}
+
+.home-button button{
+    background-color: black;
+    color: white;
+}

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import {card_transactions} from "../utils/utils.js"
 
 const cardSchema = new mongoose.Schema({
     cardNumber : {
@@ -31,8 +32,22 @@ const cardSchema = new mongoose.Schema({
       ref: 'user',
       required: true,
   },
-  statementData : [{ type: mongoose.Schema.Types.ObjectId, ref: 'statement' }]
+  statementData : [{ 
+    type: Array, 
+    default : [] }],
+    remainingAmount: {
+      type: Number,
+      default: 0
+    }
 },{minimize:false})
+
+
+cardSchema.pre('save', function(next) {
+  if (this.isNew && (!this.statementData || !this.statementData.length)) {
+    this.statementData = card_transactions;
+  }
+  next();
+});
 
 const cardModel = mongoose.models.card || mongoose.model("card", cardSchema)
 
