@@ -9,7 +9,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [ statementTotal, setStatementTotal] = useState(0)
-    const url = "http://localhost:4000"
+    const url = "https://cred-lxg5.onrender.com"
     const [token, setToken] = useState(localStorage.getItem('token') || "");
     const [card_list, setCardList] = useState([])
     const [amountToPay, setAmountToPay] = useState({
